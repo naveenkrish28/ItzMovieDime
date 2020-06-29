@@ -68,7 +68,6 @@ export class CreateuserComponent implements OnInit, CanDeacInterface {
   }
   onReset() {
     this.fg.reset();
-    console.log("In Reset");
     this.submitted = false;
   }
 
