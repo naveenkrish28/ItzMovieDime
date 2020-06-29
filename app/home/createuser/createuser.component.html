@@ -1,0 +1,47 @@
+<div class="contain"><h2 appOnFocus style=" text-align: center;"> Create New User</h2>
+<form class="form-group" [formGroup]="fg" (ngSubmit)="onCreateNewUser()">
+    <label for="EM"><b>Email: </b></label>
+    <input type="text" name="email" id="EM" class="form-control" [ngStyle]="{'width': 100 + '%'}"
+        placeholder="someone@abc.com" formControlName="email">
+    <div [ngClass]="{'alert alert-danger': 'true' }"
+        *ngIf="this.fg.get('email').touched &&this.fg.get('email').errors?.required">
+        Email Required
+    </div>
+    <div [ngClass]="{'alert alert-danger': 'true' }"
+        *ngIf="this.fg.get('email').touched && this.fg.get('email').invalid && !this.fg.get('email').errors?.required">
+        Email Invalid
+    </div>
+    <div [ngClass]="{'alert alert-danger': 'true' }"
+        *ngIf="this.emailExistsTemp && !this.fg.get('email').errors?.required">
+        Email Already Exists
+    </div>
+    <label for="PW1"><b>Password (8 - 12 characters):</b> </label>
+    <input type="password" class="form-control" [ngStyle]="{'width': 100 + '%'}" name="password" id="PW1"
+        placeholder="********" formControlName="password">
+    <div [ngClass]="{'alert alert-danger': 'true' }"
+        *ngIf="this.fg.get('password').touched  && this.fg.get('password').errors?.required">
+        Password Required
+    </div>
+    <div [ngClass]="{'alert alert-danger': 'true' }" *ngIf="this.fg.get('password').touched  && this.fg.get('password').errors?.minlength || 
+        this.fg.get('password').errors?.maxlength">
+        Password must be between 8 and 12 characters long
+    </div>
+    <label for="PW2"><b>Confirm Password</b></label>
+    <input type="password" class="form-control" [ngStyle]="{'width': 100 + '%'}" name="confirmpass" id="PW2"
+        placeholder="********" formControlName="confirmpass">
+    <div [ngClass]="{'alert alert-danger': 'true' }"
+        *ngIf="this.fg.get('confirmpass').touched  &&this.fg.get('confirmpass').errors?.required">
+        Confirm Password Required
+    </div>
+    <div [ngClass]="{'alert alert-danger': 'true' }" *ngIf="this.fg.get('confirmpass').touched  && this.fg.get('confirmpass').errors?.minlength || 
+        this.fg.get('confirmpass').errors?.maxlength">
+        Confirm Password must be between 8 and 12 characters long
+    </div>
+    <div [ngClass]="{'alert alert-danger': !passMatch }" *ngIf="!passMatch">
+        Password and Confirm Password must match
+    </div>
+    <hr>
+    <button style="border-radius: 50%;" type="submit" 
+        class="btn btn-primary" >Create</button>
+        <button style="border-radius: 50%;" class="btn btn-primary" type="button" (click)="onReset(this.fg)">Reset</button>
+</form></div>

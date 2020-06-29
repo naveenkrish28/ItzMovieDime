@@ -1,0 +1,207 @@
+<h2 style="text-align: center;">Add Movies</h2>
+<form class="form-group" [formGroup]="fg" (ngSubmit)="onSubmit(fg)">
+    <label for="mname"><b>Movie Name:</b></label>
+    <input [ngStyle]="{'width': 100 + '%'}" type="text" class="form-control" name="mname" id="mname"
+        formControlName="name"><br>
+    <div *ngIf="this.fg.get('name').touched && this.fg.get('name').errors?.required"
+        [ngClass]=" {'alert alert-danger': 'true' }">
+        Movie Name Required
+    </div>
+    <label for="img"><b>Movie Image Path (PNG or JPG):</b> </label><br>
+    <input [ngStyle]="{'width': 100 + '%'}" type="file" accept=".jpg,.png" (change)="onImageChange($event)" name="img" id="img" formControlName="image">
+    <button type="button" (click)="onClearImagePath(this.fg)">Clear path</button>
+    <div *ngIf="pbarwidth"class="progress">
+        <div class="progress-bar progress-bar-striped" [style.width.%]="pbarwidth"></div>
+    </div>
+    <br><br>
+    <div *ngIf="this.submitted && this.fg.get('image').touched && this.fg.get('image').errors?.required"
+        [ngClass]="{'alert alert-danger': 'true'}">
+        Movie Image Path Required
+    </div>
+    <div *ngIf="this.submitted && this.fg.get('image').touched && this.fg.get('image').errors?.nopngorjpg && !this.fg.get('image').errors?.required"
+        [ngClass]="{'alert alert-danger': 'true'}">
+        Please choose a JPG or PNG image
+    </div>
+    <label for="strttime"><b>Movie Start Time:</b></label>
+    <input [ngStyle]="{'width': 100 + '%'}" type="time" class="form-control" name="strttime" id="strttime"
+        formControlName="starttime">
+    <div *ngIf="this.fg.get('starttime').touched && this.fg.get('starttime').errors?.required"
+        [ngClass]="{'alert alert-danger': 'true'}">
+        Movie Start Time Required
+    </div>
+    <label for="endtime"><b>Movie End Time:</b></label>
+    <input [ngStyle]="{'width': 100 + '%'}" type="time" class="form-control" name="endtime" id="endtime"
+        formControlName="endtime">
+    <div *ngIf="this.fg.get('endtime').touched && this.fg.get('endtime').errors?.required"
+        [ngClass]="{'alert alert-danger': 'true'}">
+        Movie End Time Required
+    </div>
+    <label for="cert"><b>Certificate</b></label>
+    <select [ngStyle]="{'width': 100 + '%'}" class="form-control" name="cert" id="cert" formControlName="certificate">
+        <option>A</option>
+        <option>UA</option>
+        <option>U</option>
+    </select>
+    <div *ngIf="this.fg.get('certificate').touched && this.fg.get('certificate').errors?.required"
+        [ngClass]="{'alert alert-danger': 'true'}">
+        Movie Certificate Required
+    </div>
+    <hr>
+    <button
+        [disabled]="this.fg.get('name').errors?.required || this.fg.get('image').errors?.required || 
+        this.fg.get('starttime').errors?.required || this.fg.get('endtime').errors?.required ||
+        this.fg.get('certificate').errors?.required"
+        style="border-radius: 50%;" type="submit" class="btn btn-primary">Add</button>
+    <button style="border-radius: 50%;" class="btn btn-primary" type="button" (click)="onReset(this.fg)">Reset</button>
+</form>
+<div *ngFor="let data1 of data">
+    {{ data1.password }}
+<div>
+<!-- <img src="https://firebasestorage.googleapis.com/v0/b/itzmoviedime.appspot.com/o/Interstellar.jpg?alt
+    =media&token=59dbb79a-fdf9-4ed0-a2f9-6af72e3626de" style="width: 50vw; height: 50vh">
+<div class="d-flex " style=" overflow:scroll;">
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card " style="width:150px; height: 200px;margin-left: 3px; margin-top:3px;">
+            <img class="card-img-top" src="assets/Dia.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Teri Mitti</h4>
+                <p class="card-text">Thriller - Malayalam</p>
+            </div>
+        </div>
+    </div>
+</div> -->

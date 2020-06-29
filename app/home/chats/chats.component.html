@@ -1,0 +1,15 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Chat with new User
+        </mat-panel-title>
+        <mat-panel-description>
+            Enter User Email
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="chatEmail" matInput type="email" placeholder="someone@abc.com" required>
+    </mat-form-field>
+        <button mat-raised-button (click)="chatWithEmail()">Chat</button>
+</mat-expansion-panel>

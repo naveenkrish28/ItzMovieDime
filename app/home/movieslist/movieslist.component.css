@@ -1,0 +1,42 @@
+.container img {
+    animation: myFrame 1s ease-in;
+}
+@keyframes myFrame {
+    0%  {opacity: 1;}
+    100%  {opacity:  0;}
+}
+/* img {
+    height: 50vh;
+    width: 100vw;
+} */
+@media only screen and (max-width: 600px){
+    /* img {
+        height: 40vh;
+        width: 100vw;
+    }  */
+}
+@media only screen and (max-width: 400px){
+    /* img {
+        height: 30vh;
+        width: 100vw;
+    }  */
+}
+.right{
+    position: absolute;
+    right: 0px;
+    top: 56px;
+    width: 5%;
+    height: 25px;
+    background-color: indigo;
+    opacity: 0.5;
+}
+.card-img-top{
+    animation: cardImageAnim 1s;
+}
+@keyframes cardImageAnim{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+::-webkit-scrollbar {
+    display: none;
+}

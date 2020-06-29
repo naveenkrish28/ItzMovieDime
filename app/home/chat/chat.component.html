@@ -1,0 +1,30 @@
+<div style="background-color: cadetblue;width: 90vw;position: relative;height: 90%;
+margin:auto;overflow: scroll;border-radius: 5px;">
+    <div id="scroll" style="background-color: cadetblue;width: 85vw;position: relative;height: 100%;
+    margin:auto;overflow: scroll;border-radius: 5px;">
+    <div *ngFor="let message_ of messages; let i= index">
+        <div *ngIf="!sent[i]" style="background-color: fuchsia;width: fit-content;border-radius: 5px;">
+            <div *ngFor="let message of message_">
+                <h5 style="border-radius: 5px;
+            width:fit-content;margin: 0px 0px 5px 5px;color: white;">{{message}}</h5>
+            </div>
+        </div>
+        <div *ngIf="sent[i]" style="position:relative;margin-left: auto; background-color: blueviolet;width: 
+            fit-content;border-radius: 5px;">
+            <div *ngFor="let message of message_">
+                <h5 style="border-radius: 5px;
+            width:fit-content;margin: 0px 0px 5px 5px;color: white;">{{message}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div style="width: 90vw;max-height:30px;height: 10%;background-color: cornsilk;left: 3.5vw;bottom: 5px;
+        margin: auto;position: sticky;border-radius: 5px;">
+    <textarea appEnterSubmit [(ngModel)]="text" matInput  style="border-radius: 5px;min-height:30px;height: 10%;width: 98%;">
+    </textarea><mat-icon [ngStyle]="{'opacity':text? '1': '0.5'}" style="float:right;
+        width: 2%;margin-top: 0.6vh;"
+     (click)="sendMessage()">send
+</mat-icon>
+
+</div>

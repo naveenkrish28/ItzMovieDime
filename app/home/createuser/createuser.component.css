@@ -1,0 +1,22 @@
+
+.contain {
+    width: 40%;
+    margin: auto;
+    position: relative;
+    top: 20vh;
+    background-image: linear-gradient(to right ,purple, green);
+    box-shadow: 0px 0px 250px black;
+    border-radius: 10px;
+    animation: createUserAnime 1s;
+}
+
+h2{
+    color: blanchedalmond;
+}
+@keyframes createUserAnime{
+    0% {transform: scale(0,0);}
+    100% {transform: scale(1,1);}
+}
+.pom{
+    background-color: blueviolet;
+}

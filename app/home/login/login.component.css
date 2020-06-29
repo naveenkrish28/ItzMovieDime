@@ -1,0 +1,139 @@
+.backface {
+    position: relative;
+    top: 20vh;
+    width: 40%;
+    margin: auto;
+    display: none;
+    background-color: rgb(187, 168, 241);
+    box-shadow: 0px 0px 25px#444144;
+    border-radius: 20px;
+    animation: rotate3dback 1s linear forwards;
+    animation-delay: 1s;
+}
+@keyframes rotate3dback {
+    0% {transform: rotate3d(0,1,0,180deg);}
+    100% {transform: rotate3d(0,1,0,360deg);}
+}
+.outer{
+    position: relative;
+    top:2vh;
+    width: 35%;
+    margin: auto;
+}
+.contain {
+    position: relative;
+    top: 8vh;
+    display: block;
+    background-color: rgb(187, 168, 241);
+    box-shadow: 0px 0px 25px#444144;
+    border-radius: 20px;
+    animation: startAnime 0.5s linear ;
+}
+@keyframes startAnime {
+    0% {left: -40vw ;opacity: 0.1;}
+    12.5% {left: -20vw ;opacity: 0.2;}
+    25% {left: -10vw ;opacity: 0.8;}
+    37.5% {left: -5vw ;opacity: 1;}
+    50% {left: -2.5vw ;}
+    62.5% {left: -1.25vw ;}
+    75% {left: -0.625vw ;}
+    87.5% {left: -0.3125vw ;}
+    100% {left: 0vw ;}
+}
+.fa.fa-times-circle:hover {
+    cursor: pointer;
+    transform: scale(1.25,1.25)
+}
+button:active, .fa.fa-times-circle:active {
+    animation: buttonAnime 0.10s linear;
+}
+@keyframes buttonAnime {
+    0% {transform: scale(0.75,0.75);}
+    100% {transform: scale(1,1);}
+}
+.turn {
+    animation: rotate3d 1s linear forwards;
+}
+@keyframes rotate3d {
+    0% {transform: rotate3d(0,0,0,0deg);}
+    100% {transform: rotate3d(0,1,0,180deg);}
+}
+.title{
+    font-size: x-large;
+}
+@media only screen and (max-width: 350px){
+    .outer{
+        width: 100%;
+    }
+    .contain {
+        position: relative;
+        top: 5vh;
+        background-color: rgb(187, 168, 241);
+        box-shadow: 0px 0px 25px#444144;
+        border-radius: 20px;
+        animation: mobAnime 0.5s linear ;
+    }
+    @keyframes mobAnime{
+        0% {clip-path: inset(0% 85% 0% 0%); opacity: 0.1; }
+        100% {clip-path: inset(0% 0% 0% 0%); opacity: 1; }
+    }
+    button:active {
+        animation: mbuttonAnime 0.10s linear;
+    }
+    @keyframes mbuttonAnime {
+        0% {transform: scale(0.75,0.75);}
+        100% {transform: scale(1,1);}
+    }
+    .title{
+        font-size: large;
+    }
+}
+@media only screen and (max-width:750px){
+    .title{
+        font-size: large;
+    }
+}
+@media only screen and (max-width:750px){
+    .title{
+        font-size: large;
+    }
+}
+.scale:hover{
+    transform: scale(1.5)
+}
+.scale{
+    transition: transform 0.5s;
+    animation: slidenzoom 0.5s;
+}
+@keyframes slidenzoom{
+    0% {transform: translateX(0px);}
+    50% {transform: translateX(-30px);}
+    100% {transform: translateX(0px);}
+}
+mat-hint{
+    animation: mathintanim 1s;
+}
+@keyframes mathintanim{
+    0% {height: 0px;}
+    100% {height: 20px;}
+}
+.socialLogin{
+    position: relative;
+    width: 90%;
+    top: 2vh;;
+    margin: auto;
+    max-width: 200px;
+    min-width: 200px;
+}
+.socialLogin button{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(187, 168, 241);;
+}
+@media only screen and (max-width:350px){
+    .socialLogin{
+        max-width: 350px;
+        width: 100%;
+        display: block;
+    } 
+}

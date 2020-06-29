@@ -1,0 +1,50 @@
+<div class="outer">
+    <div class="socialLogin">
+        <button mat-raised-button (click)="loginWithGoogle()"><img src="https://img.icons8.com/color/48/000000/google-logo.png"/>Login with Google</button> <br>
+        <button style="top:1vh;"mat-raised-button (click)="loginWithFacebook()"><img src="https://img.icons8.com/color/48/000000/facebook-circled.png"/>Login with Facebook</button>
+    </div>
+    <div class="contain">
+        <h2 style="width:90%;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-align: center;" class="mx-auto title">Member Login</h2>
+        <form class="form-group" [formGroup]="fg" (ngSubmit)="onSubmit(fg)">
+            <mat-form-field style="width:55%">
+                <mat-label for="email">Email </mat-label>
+                <input matInput name="email" id="EM" autocomplete="off" [ngStyle]="{'width': 100 + '%'}" placeholder="someone@abc.com"
+                formControlName="email">
+            <mat-hint style="color:red" *ngIf="this.fg.get('email').touched && 
+        this.fg.get('email').errors?.required">
+                Email Required
+            </mat-hint>
+            <mat-hint style="color:red" *ngIf="this.fg.get('email').touched && 
+        this.fg.get('email').invalid && !this.fg.get('email').errors?.required">
+                Email Invalid
+        </mat-hint></mat-form-field><br>
+            <mat-form-field style="width:55%">
+                <mat-label for="pasowrd">Password</mat-label>
+                <input matInput type="password"  [ngStyle]="{'width': 100 + '%'}" name="password" id="PW"
+                placeholder="********" formControlName="password">
+            <mat-hint style="color:red" *ngIf="this.fg.get('password').touched && 
+        this.fg.get('password').errors?.required">
+                Password Required
+            </mat-hint>
+            <mat-hint style="color:red" *ngIf="this.fg.get('password').touched  && 
+            this.fg.get('password').errors?.minlength || 
+            this.fg.get('password').errors?.maxlength">
+                Password must be between 8 and 12 characters long
+            </mat-hint></mat-form-field><br>
+            <hr>
+            <button mat-raised-button
+                style="box-shadow: 0px 0px 25px#444144;background-color: rgb(125, 96, 204) ;font-family: Comic Sans MS ;float: left; border-radius: 50%;"
+                type="submit" class="btn btn-primary" [disabled]="(this.fg.get('password').errors?.minlength || 
+        this.fg.get('password').errors?.maxlength) || 
+        this.fg.get('email').invalid || this.fg.get('email').errors?.required || 
+        this.fg.get('password').errors?.required">Login</button>
+            <button mat-raised-button 
+                style="box-shadow: 0px 0px 25px#444144;background-image: radial-gradient(red,rgb(125, 96, 204) );font-family: Comic Sans MS ;float: right; border-radius: 50%;"
+                class="btn btn-primary" type="button" (click)="onReset(fg)">Reset</button>
+        </form>
+    </div>
+</div>
+<!-- <div style="position:relative">
+<div [@anim]="state1" style="position: absolute; left: 40vw; right : 40vh;width:15vw; height: 30vh; background-color: blueviolet;" (click)="animate()">Front</div>
+<div [@anim]="state2" style="position: absolute; left: 40vw; right : 40vh;width:15vw; height: 30vh; background-color: blueviolet;" (click)="animate()">Back</div>
+</div> -->

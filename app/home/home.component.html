@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-primary ">
+    <mat-icon [ngStyle]="{'color':'white'}" title="Movies"style="cursor: pointer;"[matMenuTriggerFor]="menu1">local_movies</mat-icon>
+    <mat-menu #menu1="matMenu">
+        <a mat-menu-item  [routerLink]="['movies']">Movies</a>
+    </mat-menu>
+    <mat-icon [ngStyle]="{'color':'white'}" class="ml-auto" style="cursor: pointer;"[matMenuTriggerFor]="menu" title="Account">account_circle</mat-icon>
+    <mat-menu  #menu>
+    <a mat-menu-item *ngIf="!this.login.isLoggedIn"  [routerLink]="['login']">Login</a>
+    <a mat-menu-item *ngIf="this.login.isAdmin && this.login.isLoggedIn" 
+        [routerLink]="['addmovie']">Add Movies</a>
+    <a mat-menu-item *ngIf="this.login.isLoggedIn" 
+        [routerLink]="['changepass'] ">Change Password</a>
+    <a mat-menu-item *ngIf="this.login.isLoggedIn"  (click)="onLogout()"
+        [routerLink]="['login'] ">Logout</a>
+    <a mat-menu-item *ngIf="this.login.isLoggedIn"  (click)="onDelete()"
+        [routerLink]="['login'] ">Delete Account</a>
+    <a mat-menu-item *ngIf="!this.login.isLoggedIn" [routerLink]="['create']" [queryParams]="{search :'bad'}" queryParamsHandling="merge">Create User</a>
+    <a mat-menu-item *ngIf="this.login.isLoggedIn" [routerLink]="['chats']">Chats</a>
+    </mat-menu>
+</nav>
+<router-outlet></router-outlet>
